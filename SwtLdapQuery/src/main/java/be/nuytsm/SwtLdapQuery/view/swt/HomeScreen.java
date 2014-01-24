@@ -1,6 +1,8 @@
 package be.nuytsm.SwtLdapQuery.view.swt;
 
 
+import java.awt.image.BufferedImage;
+
 import javax.naming.NamingException;
 import javax.naming.directory.SearchResult;
 
@@ -16,6 +18,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.TraverseEvent;
 import org.eclipse.swt.events.TraverseListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
@@ -40,6 +43,9 @@ public class HomeScreen {
 		
 		Display display = new Display();
 		Shell shell = new Shell(display);
+		
+		addProgramIcon(display, shell);
+		
 		initApplicationView(shell);	
 		shell.open();
 		// run the event loop as long as the window is open
@@ -55,6 +61,11 @@ public class HomeScreen {
 	
 		// disposes all associated windows and their components
 		display.dispose(); 
+	}
+
+	private void addProgramIcon(Display display, Shell shell) {
+		Image image = new Image(display, ClassLoader.getSystemResourceAsStream("64px-LDAP-Finder-Icon.png"));
+		shell.setImage(image);
 	}
 
 	private void initApplicationView(Shell shell) {
